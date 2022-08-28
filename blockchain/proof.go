@@ -5,7 +5,6 @@ import (
 	"crypto/sha256"
 	"encoding/binary"
 	"fmt"
-	"log"
 	"math"
 	"math/big"
 )
@@ -23,7 +22,7 @@ import (
 // Requirements:
 // The Frirst few bytes must contain 0s
 
-const Difficulty = 18
+const Difficulty = 12
 
 type ProofOfWork struct {
 	Block  *Block
@@ -90,9 +89,7 @@ func (pow *ProofOfWork) Validate() bool {
 func ToHex(num int64) []byte {
 	buff := new(bytes.Buffer)
 	err := binary.Write(buff, binary.BigEndian, num)
-	if err != nil {
-		log.Panic(err)
-	}
+	Handle(err)
 
 	return buff.Bytes()
 }
