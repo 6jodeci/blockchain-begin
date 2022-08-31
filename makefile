@@ -1,7 +1,13 @@
+create:
+	go run main.go createblockchain -address "John"
+
 print:
-	go run main.go print
+	go run main.go printchain
 
-add:
-	go run main.go add -block "send 10 BTC to Jackie"
+get_balance:
+	go run main.go getbalance -address "John"
 
-.PHONY: print add
+send:
+	go run main.go send -from "John" -to "fred" -amount 50
+
+.PHONY: create print get_balance send
